@@ -1,10 +1,18 @@
 from app import app
 
+running = False
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'true'
+    return ''
 
-@app.route('/wake')
-def wake():
-    return 'true'
+@app.route('/start')
+def start():
+    running = True
+    return str(running)
+
+@app.route('/stop')
+def stop():
+    running = False
+    return str(running)
