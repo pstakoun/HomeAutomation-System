@@ -1,6 +1,4 @@
-from app import app
-
-running = False
+from app import app, system
 
 @app.route('/')
 @app.route('/index')
@@ -9,10 +7,10 @@ def index():
 
 @app.route('/start')
 def start():
-    running = True
-    return str(running)
+    system.start()
+    return str(system.isRunning())
 
 @app.route('/stop')
 def stop():
-    running = False
-    return str(running)
+    system.stop()
+    return str(system.isRunning())
