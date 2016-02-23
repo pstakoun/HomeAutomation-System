@@ -7,6 +7,7 @@ running = False
 def initGPIO():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(LED_PIN, GPIO.OUT)
+    GPIO.output(LED_PIN, False)
 
 def start():
     running = True
