@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 
 ON_LED_PIN = -1
-OFF_LED_PIN = 2
+OFF_LED_PIN = 3
 SENSOR_PIN = -1
 CAMERA_PIN = -1
 
