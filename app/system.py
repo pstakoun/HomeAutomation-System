@@ -1,4 +1,3 @@
-from app import app
 import RPi.GPIO as GPIO
 import picamera
 import thread
