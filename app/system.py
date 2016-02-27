@@ -1,20 +1,26 @@
 import RPi.GPIO as GPIO
+import picamera
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
-SENSOR_PIN = -1
-CAMERA_PIN = -1
+SENSOR_PIN = 7
+
+camera = picamera.PiCamera()
 
 running = False
 
-def initGPIO():
+def __init__():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(OFF_LED_PIN, GPIO.OUT)
     GPIO.setup(ON_LED_PIN, GPIO.OUT)
-    #GPIO.setup(SENSOR_PIN, GPIO.IN)
-    #GPIO.setup(CAMERA_PIN, GPIO.IN)
+    GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
+    detectMotion()
+
+def detectMotion():
+    while True:
+        print(GPIO.input(sensor))
 
 def start():
     global running
