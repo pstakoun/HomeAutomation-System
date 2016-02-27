@@ -15,12 +15,12 @@ GPIO.output(ON_LED_PIN, False)
 
 running = False
 
-detectMotion()
-
 def detectMotion():
     camera = picamera.PiCamera()
     while True:
         print(GPIO.input(SENSOR_PIN))
+
+detectMotion()
 
 def start():
     global running
