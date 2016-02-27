@@ -15,8 +15,7 @@ GPIO.output(ON_LED_PIN, False)
 
 running = False
 
-def __init__():
-    thread.start_new_thread(detectMotion, ())
+detectMotion()
 
 def detectMotion():
     camera = picamera.PiCamera()
