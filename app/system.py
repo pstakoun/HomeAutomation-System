@@ -22,7 +22,7 @@ def __init__():
 def detectMotion():
     camera = picamera.PiCamera()
     while True:
-        app.logging.debug(GPIO.input(SENSOR_PIN))
+        app.logging.info(GPIO.input(SENSOR_PIN))
 
 def start():
     global running
