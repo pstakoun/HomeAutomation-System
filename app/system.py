@@ -18,7 +18,7 @@ running = False
 def detectMotion():
     camera = picamera.PiCamera()
     while True:
-        time.sleep(1)
+        time.sleep(0.5)
         print(GPIO.input(SENSOR_PIN))
 
 detectMotion()
