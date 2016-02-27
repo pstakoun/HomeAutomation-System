@@ -21,7 +21,9 @@ def __init__():
 
 def detectMotion():
     camera = picamera.PiCamera()
+    app.logging.info("a")
     while True:
+        app.logging.info("b")
         app.logging.info(GPIO.input(SENSOR_PIN))
 
 def start():
