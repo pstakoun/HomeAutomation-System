@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import picamera
 import thread
+import sys
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
@@ -16,21 +17,16 @@ def __init__():
     GPIO.setup(SENSOR_PIN, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
-    sys.stdout("a")#
-    sys.stdout.flush()#
+    sys.stdout("a")
     thread.start_new_thread(detectMotion, ())
-    sys.stdout("b")#
-    sys.stdout.flush()#
+    sys.stdout("b")
 
 def detectMotion():
-    sys.stdout("c")#
-    sys.stdout.flush()#
+    sys.stdout("c")
     camera = picamera.PiCamera()
-    sys.stdout("d")#
-    sys.stdout.flush()#
+    sys.stdout("d")
     while True:
-        sys.stdout("e")#
-        sys.stdout.flush()#
+        sys.stdout("e")
         sys.stdout(GPIO.input(SENSOR_PIN))
 
 def start():
