@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import picamera
-import thread
+import time
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
@@ -18,6 +18,7 @@ running = False
 def detectMotion():
     camera = picamera.PiCamera()
     while True:
+        time.sleep(1)
         print(GPIO.input(SENSOR_PIN))
 
 detectMotion()
