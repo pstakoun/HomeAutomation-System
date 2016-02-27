@@ -17,11 +17,13 @@ def initGPIO():
     GPIO.output(ON_LED_PIN, False)
 
 def start():
+    global running
     running = True
     GPIO.output(OFF_LED_PIN, False)
     GPIO.output(ON_LED_PIN, True)
 
 def stop():
+    global running
     running = False
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
