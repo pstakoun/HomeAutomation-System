@@ -17,7 +17,7 @@ def __init__():
     GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
-    camera.capture(datetime.datetime.now().strftime("%Y%m%d%H%M%S.jpg"))
+    #camera.capture(datetime.datetime.now().strftime("%Y%m%d%H%M%S.jpg"))
     detectMotion()
 
 def detectMotion():
