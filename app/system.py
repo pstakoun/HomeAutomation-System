@@ -17,17 +17,22 @@ def __init__():
     GPIO.setup(SENSOR_PIN, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
-    app.logging.info("a")
+    sys.stdout("a")#
+    sys.stdout.flush()#
     thread.start_new_thread(detectMotion, ())
-    app.logging.info("b")
+    sys.stdout("b")#
+    sys.stdout.flush()#
 
 def detectMotion():
-    app.logging.info("c")
+    sys.stdout("c")#
+    sys.stdout.flush()#
     camera = picamera.PiCamera()
-    app.logging.info("d")
+    sys.stdout("d")#
+    sys.stdout.flush()#
     while True:
-        app.logging.info("e")
-        app.logging.info(GPIO.input(SENSOR_PIN))
+        sys.stdout("e")#
+        sys.stdout.flush()#
+        sys.stdout(GPIO.input(SENSOR_PIN))
 
 def start():
     global running
