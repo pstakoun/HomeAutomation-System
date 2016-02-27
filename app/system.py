@@ -9,6 +9,7 @@ SENSOR_PIN = 7
 running = False
 
 def __init__():
+    global GPIO
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(OFF_LED_PIN, GPIO.OUT)
     GPIO.setup(ON_LED_PIN, GPIO.OUT)
