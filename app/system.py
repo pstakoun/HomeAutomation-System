@@ -17,13 +17,16 @@ def __init__():
     GPIO.setup(SENSOR_PIN, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
+    app.logging.info("a")
     thread.start_new_thread(detectMotion, ())
+    app.logging.info("b")
 
 def detectMotion():
+    app.logging.info("c")
     camera = picamera.PiCamera()
-    app.logging.info("a")
+    app.logging.info("d")
     while True:
-        app.logging.info("b")
+        app.logging.info("e")
         app.logging.info(GPIO.input(SENSOR_PIN))
 
 def start():
