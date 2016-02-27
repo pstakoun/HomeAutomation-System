@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import picamera
-import datetime
+import thread
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
@@ -15,7 +15,7 @@ def __init__():
     GPIO.setup(sensor, GPIO.IN, GPIO.PUD_DOWN)
     GPIO.output(OFF_LED_PIN, True)
     GPIO.output(ON_LED_PIN, False)
-    detectMotion()
+    thread.start_new_thread(detectMotion, ())
 
 def detectMotion():
     camera = picamera.PiCamera()
