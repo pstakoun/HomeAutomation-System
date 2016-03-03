@@ -47,7 +47,7 @@ def detectMotion():
             time.sleep(5)
 
 print("Starting motion detection")
-thread.start_new_thread(detectMotion(), ())
+thread.start_new_thread(detectMotion, ())
 print("DEBUG")
 
 def start():
