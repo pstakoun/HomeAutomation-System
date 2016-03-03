@@ -21,14 +21,17 @@ def detectMotion():
     motionDetected = False
     while True:
         time.sleep(0.5)
-        if GPIO.input(SENSOR_PIN) and not motionDetected:
+        current = GPIO.input(SENSOR_PIN)
+        if current and not motionDetected:
             motionDetected = True
             loc = datetime.datetime.now().strftime("captures/%Y%m%d%H%M%S")
             for i in range(3):
                 camera.capture(loc+str(i)+'.jpg')
                 time.sleep(1)
-        elif motionDetected:
+        elif motionDetected and not current:
             motionDetected = False
+            sleep(5)
+
 
 detectMotion()
 
