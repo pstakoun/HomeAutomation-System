@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import picamera
 import time
+import datetime
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
@@ -15,11 +16,19 @@ GPIO.output(ON_LED_PIN, False)
 
 running = False
 
+motionDetected = False
 def detectMotion():
     camera = picamera.PiCamera()
     while True:
         time.sleep(0.5)
-        print(GPIO.input(SENSOR_PIN))
+        if GPIO.input(SENSOR_PIN) and not motionDetected:
+            motionDetected = True
+            loc = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+            for i in range(3):
+                camera.capture('loc/capture'+i+'.jpg')
+                time.sleep(1)
+        elif motionDetected:
+            motionDetected = False
 
 detectMotion()
 
