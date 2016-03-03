@@ -16,9 +16,9 @@ GPIO.output(ON_LED_PIN, False)
 
 running = False
 
-motionDetected = False
 def detectMotion():
     camera = picamera.PiCamera()
+    motionDetected = False
     while True:
         time.sleep(0.5)
         if GPIO.input(SENSOR_PIN) and not motionDetected:
