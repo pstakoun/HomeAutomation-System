@@ -22,7 +22,7 @@ captures = []
 
 def updateCaptures():
     global captures
-    captures = [name for name in os.listdir(os.getcwd()+'/captures')]
+    captures = [name for name in os.listdir('~/HAS-captures')]
 
 updateCaptures()
 
@@ -35,7 +35,7 @@ def detectMotion():
         if current and not motionDetected:
             print("Motion detected")
             motionDetected = True
-            loc = datetime.datetime.now().strftime("captures/%Y%m%d%H%M%S")
+            loc = datetime.datetime.now().strftime("~/HAS-captures/%Y%m%d%H%M%S")
             for i in range(3):
                 camera.capture(loc+str(i)+'.jpg')
                 time.sleep(1)
