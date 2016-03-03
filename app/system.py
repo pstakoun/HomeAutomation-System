@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import picamera
+import os, os.path
 import time
 import datetime
 
@@ -16,6 +17,14 @@ GPIO.output(ON_LED_PIN, False)
 
 running = False
 
+captures = []
+
+def updateCaptures():
+    global captures
+    captures = [name for name in os.listdir('captures') if os.path.isfile(name)]
+
+updateCaptures()
+
 def detectMotion():
     camera = picamera.PiCamera()
     motionDetected = False
@@ -29,6 +38,7 @@ def detectMotion():
             for i in range(3):
                 camera.capture(loc+str(i)+'.jpg')
                 time.sleep(1)
+            updateCaptures()
             print("Images captured")
         elif motionDetected and not current:
             print("Motion no longer detected")
@@ -52,3 +62,10 @@ def stop():
 
 def isRunning():
     return running
+
+def countCaptures():
+    updateCaptures()
+    return len(captures)
+
+def getCapture(n):
+    return captures[n]

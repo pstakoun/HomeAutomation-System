@@ -1,4 +1,5 @@
 from app import app, system
+from flask import send_file
 
 @app.route('/')
 @app.route('/index')
@@ -14,3 +15,11 @@ def start():
 def stop():
     system.stop()
     return str(system.isRunning())
+
+@app.route('/count-captures')
+def countCaptures():
+    return str(system.countCaptures())
+
+@app.route('/capture/<n>')
+def capture(n):
+    return send_file('captures/'+getCapture(n), mimetype='image/jpeg')
