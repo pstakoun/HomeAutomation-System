@@ -22,4 +22,4 @@ def countCaptures():
 
 @app.route('/capture/<n>')
 def capture(n):
-    return send_file('captures/'+getCapture(n), mimetype='image/jpeg')
+    return send_file('captures/'+system.getCapture(n), mimetype='image/jpeg')
