@@ -46,7 +46,9 @@ def detectMotion():
             motionDetected = False
             time.sleep(5)
 
+print("Starting motion detection")
 thread.start_new_thread(detectMotion(), ())
+print("DEBUG")
 
 def start():
     global running
