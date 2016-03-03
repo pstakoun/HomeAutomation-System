@@ -30,7 +30,7 @@ def detectMotion():
                 time.sleep(1)
         elif motionDetected and not current:
             motionDetected = False
-            sleep(5)
+            time.sleep(5)
 
 
 detectMotion()
