@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import thread
 import picamera
 import os, os.path
 import time
@@ -45,8 +46,7 @@ def detectMotion():
             motionDetected = False
             time.sleep(5)
 
-
-detectMotion()
+thread.start_new_thread(detectMotion(), ())
 
 def start():
     global running
