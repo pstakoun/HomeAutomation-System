@@ -22,7 +22,7 @@ captures = []
 
 def updateCaptures():
     global captures
-    captures = [name for name in os.listdir('captures')]
+    captures = [name for name in os.listdir('../captures')]
 
 updateCaptures()
 
