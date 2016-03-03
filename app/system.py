@@ -25,7 +25,7 @@ def detectMotion():
             motionDetected = True
             loc = datetime.datetime.now().strftime("captures/%Y%m%d%H%M%S")
             for i in range(3):
-                camera.capture(loc'/capture'+i+'.jpg')
+                camera.capture(loc+'/capture'+i+'.jpg')
                 time.sleep(1)
         elif motionDetected:
             motionDetected = False
