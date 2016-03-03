@@ -22,4 +22,4 @@ def countCaptures():
 
 @app.route('/capture/<n>')
 def capture(n):
-    return send_file('/home/pi/HAS-captures'+system.getCapture(int(n)), mimetype='image/jpeg')
+    return send_file('/home/pi/HAS-captures/'+system.getCapture(int(n)), mimetype='image/jpeg')
