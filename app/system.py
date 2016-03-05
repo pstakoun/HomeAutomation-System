@@ -13,7 +13,7 @@ SENSOR_PIN = 7
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(OFF_LED_PIN, GPIO.OUT)
 GPIO.setup(ON_LED_PIN, GPIO.OUT)
-GPIO.setup(SENSOR_PIN, GPIO.IN, GPIO.PUD_DOWN)
+GPIO.setup(SENSOR_PIN, GPIO.IN)
 GPIO.output(OFF_LED_PIN, True)
 GPIO.output(ON_LED_PIN, False)
 
@@ -30,7 +30,6 @@ updateCaptures()
 def detectMotion():
     camera = picamera.PiCamera()
     motionDetected = False
-    time.sleep(5)
     while running:
         time.sleep(0.5)
         current = GPIO.input(SENSOR_PIN)
