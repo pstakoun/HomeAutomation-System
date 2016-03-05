@@ -36,7 +36,7 @@ def detectMotion():
             print("Motion detected")
             motionDetected = True
             loc = tzlocal.get_localzone().localize(datetime.datetime.now()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
-            with PiCamera(resolution=(640,360)) as camera:
+            with picamera.PiCamera(resolution=(640,360)) as camera:
                 for i in range(3):
                     camera.capture(loc+str(i)+'.jpg')
                     time.sleep(1)
