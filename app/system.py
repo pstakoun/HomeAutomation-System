@@ -4,6 +4,7 @@ import picamera
 import os, os.path
 import time
 import datetime
+import tzlocal
 
 OFF_LED_PIN = 12
 ON_LED_PIN = 11
@@ -35,7 +36,7 @@ def detectMotion():
         if current and not motionDetected:
             print("Motion detected")
             motionDetected = True
-            loc = datetime.datetime.now().strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
+            loc = datetime.datetime.now().astimezone(tzlocal.get_localzone()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
             for i in range(3):
                 camera.capture(loc+str(i)+'.jpg')
                 time.sleep(1)
