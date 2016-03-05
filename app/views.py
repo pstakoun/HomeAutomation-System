@@ -16,6 +16,10 @@ def stop():
     system.stop()
     return str(system.isRunning())
 
+@app.route('/isRunning')
+def isRunning():
+    return str(system.isRunning())
+
 @app.route('/count-captures')
 def countCaptures():
     return str(system.countCaptures())
