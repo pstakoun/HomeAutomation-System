@@ -21,7 +21,7 @@ def countCaptures():
     return str(system.countCaptures())
 
 @app.route('/captures')
-def captures(n):
+def captures():
     return str(system.captures)
 
 @app.route('/capture/<n>')
