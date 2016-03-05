@@ -20,6 +20,10 @@ def stop():
 def countCaptures():
     return str(system.countCaptures())
 
+@app.route('/captures')
+def captureDate(n):
+    return str(system.captures)
+
 @app.route('/capture/<n>')
 def capture(n):
     return send_file('/home/pi/HAS-captures/'+system.getCapture(int(n)), mimetype='image/jpeg')
