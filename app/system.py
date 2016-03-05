@@ -22,14 +22,14 @@ captures = []
 
 def updateCaptures():
     global captures
-    captures = [name for name in os.listdir('/home/pi/HAS-captures')]
+    captures = sorted([name for name in os.listdir('/home/pi/HAS-captures')])
 
 updateCaptures()
 
 def detectMotion():
     camera = picamera.PiCamera()
     motionDetected = False
-    while True:
+    while running:
         time.sleep(0.5)
         current = GPIO.input(SENSOR_PIN)
         if current and not motionDetected:
@@ -46,14 +46,13 @@ def detectMotion():
             motionDetected = False
             time.sleep(5)
 
-print("Starting motion detection")
-thread.start_new_thread(detectMotion, ())
-
 def start():
     global running
     running = True
     GPIO.output(OFF_LED_PIN, False)
     GPIO.output(ON_LED_PIN, True)
+    print("Starting motion detection")
+    thread.start_new_thread(detectMotion, ())
 
 def stop():
     global running
