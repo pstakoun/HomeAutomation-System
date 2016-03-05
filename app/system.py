@@ -28,7 +28,6 @@ def updateCaptures():
 updateCaptures()
 
 def detectMotion():
-    camera = picamera.PiCamera()
     motionDetected = False
     while running:
         time.sleep(0.5)
@@ -37,9 +36,10 @@ def detectMotion():
             print("Motion detected")
             motionDetected = True
             loc = tzlocal.get_localzone().localize(datetime.datetime.now()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
-            for i in range(3):
-                camera.capture(loc+str(i)+'.jpg')
-                time.sleep(1)
+            with PiCamera(resolution=(640,360)) as camera:
+                for i in range(3):
+                    camera.capture(loc+str(i)+'.jpg')
+                    time.sleep(1)
             updateCaptures()
             print("Images captured")
         elif motionDetected and not current:
