@@ -25,6 +25,6 @@ def capture(n):
     return send_file('/home/pi/HAS-captures/'+system.getCapture(int(n)), mimetype='image/jpeg')
 
 @app.route('/capture/<n>/date')
-def capture(n):
+def captureDate(n):
     fileName = system.getCapture(int(n))
     return fileName[:4]+'-'+fileName[4:6]+'-'+fileName[6:8]+' '+fileName[8:10]+':'+fileName[10:12]+':'+fileName[12:14]
