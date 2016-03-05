@@ -47,18 +47,20 @@ def detectMotion():
             time.sleep(5)
 
 def start():
-    global running
-    running = True
-    GPIO.output(OFF_LED_PIN, False)
-    GPIO.output(ON_LED_PIN, True)
-    print("Starting motion detection")
-    thread.start_new_thread(detectMotion, ())
+    if not running:
+        global running
+        running = True
+        GPIO.output(OFF_LED_PIN, False)
+        GPIO.output(ON_LED_PIN, True)
+        print("Starting motion detection")
+        thread.start_new_thread(detectMotion, ())
 
 def stop():
-    global running
-    running = False
-    GPIO.output(OFF_LED_PIN, True)
-    GPIO.output(ON_LED_PIN, False)
+    if running:
+        global running
+        running = False
+        GPIO.output(OFF_LED_PIN, True)
+        GPIO.output(ON_LED_PIN, False)
 
 def isRunning():
     return running
