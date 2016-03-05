@@ -17,7 +17,7 @@ GPIO.output(OFF_LED_PIN, True)
 GPIO.output(ON_LED_PIN, False)
 
 running = False
-camera = picamera.PiCamera()
+
 captures = []
 
 def updateCaptures():
@@ -27,6 +27,7 @@ def updateCaptures():
 updateCaptures()
 
 def detectMotion():
+    camera = picamera.PiCamera()
     motionDetected = False
     while running:
         time.sleep(0.5)
