@@ -30,6 +30,7 @@ updateCaptures()
 def detectMotion():
     camera = picamera.PiCamera()
     motionDetected = False
+    time.sleep(5)
     while running:
         time.sleep(0.5)
         current = GPIO.input(SENSOR_PIN)
