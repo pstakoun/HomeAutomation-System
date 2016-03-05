@@ -36,7 +36,7 @@ def detectMotion():
         if current and not motionDetected:
             print("Motion detected")
             motionDetected = True
-            loc = local_tz.localize(datetime.datetime.now()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
+            loc = tzlocal.get_localzone().localize(datetime.datetime.now()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
             for i in range(3):
                 camera.capture(loc+str(i)+'.jpg')
                 time.sleep(1)
