@@ -23,12 +23,13 @@ captures = []
 
 def updateCaptures():
     global captures
-    captures = sorted([name for name in os.listdir('/home/pi/HAS-captures')])
+    captures = sorted(os.listdir('/home/pi/HAS-captures'))
 
 updateCaptures()
 
 def detectMotion():
     motionDetected = False
+    time.sleep(10)
     while running:
         time.sleep(0.5)
         current = GPIO.input(SENSOR_PIN)
@@ -45,7 +46,7 @@ def detectMotion():
         elif motionDetected and not current:
             print("Motion no longer detected")
             motionDetected = False
-            time.sleep(5)
+            time.sleep(10)
 
 def start():
     if not running:
