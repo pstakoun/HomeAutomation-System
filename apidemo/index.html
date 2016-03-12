@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Automation System API Demo</title>
+        <script>
+            var address = "http://192.168.0.31:5000";
+
+            function post(s, f) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        f(xhttp.responseText);
+                    }
+                };
+                xhttp.open("POST", address + s, true);
+                xhttp.send();
+            }
+
+            window.onload = function() {
+                post("/count-captures", function(res) {
+                    var count = parseInt(res);
+                    if (!isNaN(count)) {
+                        post("/capture/"+(count-1), function(img) {
+                            document.body.innerHTML = img;
+                        });
+                    }
+                });
+            };
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
