@@ -23,7 +23,7 @@ captures = []
 
 def updateCaptures():
     global captures
-    captures = sorted(os.listdir('/home/pi/HAS-captures'))
+    captures = sorted(os.listdir('/home/pi/HSS-captures'))
 
 updateCaptures()
 
@@ -36,7 +36,7 @@ def detectMotion():
         if current and not motionDetected:
             print("Motion detected")
             motionDetected = True
-            loc = tzlocal.get_localzone().localize(datetime.datetime.now()).strftime("/home/pi/HAS-captures/%Y%m%d%H%M%S")
+            loc = tzlocal.get_localzone().localize(datetime.datetime.now()).strftime("/home/pi/HSS-captures/%Y%m%d%H%M%S")
             with picamera.PiCamera(resolution=(640,360)) as camera:
                 for i in range(3):
                     camera.capture(loc+str(i)+'.jpg')
